@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def calculate_intcode_output(noun, verb, data_orig)
   data = data_orig.clone
   data[1] = noun
@@ -26,7 +28,7 @@ p calculate_intcode_output(12, 2, data_orig)
 # part 2
 (0...99).each do |noun|
   (0...99).each do |verb|
-    if calculate_intcode_output(noun, verb, data_orig) == 19690720
+    if calculate_intcode_output(noun, verb, data_orig) == 19_690_720
       p 100 * noun + verb
       break
     end
