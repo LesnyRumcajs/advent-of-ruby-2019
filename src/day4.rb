@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-lowest, highest = File.read('res/day4.txt').split('-').map(&:to_i)
+lowest, highest = File.read('res/day4.txt').split('-')
 part1 = (lowest...highest)
-           .map(&:to_s)
            .select do |n|
               n.chars
               .each_cons(2)
