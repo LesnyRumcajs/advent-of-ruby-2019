@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 # Load input
-modules = File.readlines('res/day1.txt').reject { |l| l.strip.empty? }.map(&:to_i)
+modules = File.readlines('res/day1.txt')
+              .reject { |l| l.strip.empty? }
+              .map(&:to_i)
 
 # Part 1
 p modules.map { |v| v / 3 - 2 }.sum
