@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 lowest, highest = File.read('res/day4.txt').split('-').map(&:to_i)
-day1 = (lowest...highest)
+part1 = (lowest...highest)
            .map(&:to_s)
            .select do |n|
               n.chars
@@ -14,12 +14,12 @@ day1 = (lowest...highest)
               .map(&:first)
               .size
            end
-day2 = day1.reject do |n|
+part2 = part1.reject do |n|
               n.chars
                .chunk(&:itself)
                .select { |v| v[1].size == 2 }
                .empty?
             end
 
-p day1.size
-p day2.size
+p part1.size
+p part2.size
