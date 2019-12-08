@@ -15,7 +15,7 @@ p l.count(1) * l.count(2)
 image.each_slice(WIDTH*HEIGHT)
      .to_a
      .transpose
-     .map { |pixel| pixel.reject{|l| l == 2}
+     .map { |pixel| pixel.reject{ |p| p == 2}
                          .first
                          .zero? ? ' ' : '*' }
      .each_slice(WIDTH) { |line| puts line.join }
