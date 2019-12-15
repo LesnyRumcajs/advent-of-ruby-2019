@@ -15,7 +15,7 @@ class IntCodeParser
     @finished || @ip >= @data.size
   end
 
-  def calculate(input)
+  def calculate(input = [])
     until finished?
       opcode, modes = parse_header
       case opcode
