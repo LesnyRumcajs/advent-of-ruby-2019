@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Ingredient
   attr_reader :quantity, :name
   def initialize(description)
@@ -10,13 +12,13 @@ class Reaction
   attr_reader :result, :ingredients
   def initialize(recipe)
     *@ingredients, @result = recipe.scan(/\d+ \w+/)
-                                   .map{|chunk| Ingredient.new(chunk)}
+                                   .map { |chunk| Ingredient.new(chunk) }
   end
 end
 
 class NanoFactory
   def initialize(data)
-    @reactions = Hash.new
+    @reactions = {}
     data.lines.each do |recipe|
       reaction = Reaction.new(recipe)
       @reactions[reaction.result.name] = [reaction.result.quantity, reaction.ingredients]
@@ -39,7 +41,9 @@ class NanoFactory
       ingredients.each do |ingredient|
         required[ingredient.name] ||= 0
         required[ingredient.name] += reactions * ingredient.quantity
-        process(ingredient.name, ingredient.quantity * reactions, required, waste) unless ingredient.name == 'ORE'
+        unless ingredient.name == 'ORE'
+          process(ingredient.name, ingredient.quantity * reactions, required, waste)
+        end
       end
     end
 
